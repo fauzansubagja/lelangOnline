@@ -25,3 +25,7 @@ Route::get('/2', function () {
 Route::get('/3', function () {
     return view('admin.barang.view');
 });
+
+Auth::routes();
+
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -8,9 +8,21 @@
         </ol>
     </div>
     @if ($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{ $message }}</p>
+    <div class="alert alert-success solid alert-right-icon alert-dismissible fade show">
+        <span><i class="mdi mdi-check"></i></span>
+        <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i
+                    class="mdi mdi-close"></i></span>
+        </button> {{ $message }}
     </div>
+    @endif
+    @if(session('success'))
+    <script>
+        Swal.fire({
+         icon: 'success',
+         title: 'Berhasil',
+         text: '{{ session('success') }}',
+      })
+    </script>
     @endif
     <div class="row">
         <div class="col-xl-12">
@@ -44,15 +56,16 @@
                                     <td>Rp.{{ number_format($brg->harga_awal, 0, ',', '.') }}</td>
                                     <td>{{ $brg->deskripsi_barang }}</td>
                                     <td>
-                                        <form action="{{ route('barang.destroy',$brg->id) }}" method="POST">
-                                            <a class="btn btn-info" href="{{ route('barang.show',$brg->id) }}"><i
+                                        <form action="{{ route('barang.destroy', $brg->id) }}" method="POST"
+                                            id="delete-form">
+                                            <a class="btn btn-info" href="{{ route('barang.show', $brg->id) }}"><i
                                                     class="fa fa-eye" aria-hidden="true"></i></a>
-                                            <a class="btn btn-primary" href="{{ route('barang.edit',$brg->id) }}"><i
+                                            <a class="btn btn-primary" href="{{ route('barang.edit', $brg->id) }}"><i
                                                     class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-youtube"><i class="fa fa-trash"
-                                                    aria-hidden="true"></i></button>
+                                            <button type="button" class="btn btn-youtube" id="delete-button"><i
+                                                    class="fa fa-trash" aria-hidden="true"></i></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -65,4 +78,23 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.getElementById('delete-button').addEventListener('click', function() {
+      Swal.fire({
+         title: 'Anda yakin ingin menghapus data ini?',
+         text: "Data yang dihapus tidak dapat dikembalikan!",
+         icon: 'warning',
+         showCancelButton: true,
+         confirmButtonColor: '#3085d6',
+         cancelButtonColor: '#d33',
+         confirmButtonText: 'Ya, hapus data!',
+         cancelButtonText: 'Batal'
+      }).then((result) => {
+         if (result.isConfirmed) {
+            document.getElementById('delete-form').submit();
+         }
+      });
+   });
+</script>
 @endsection

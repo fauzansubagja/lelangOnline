@@ -72,21 +72,21 @@
 </div>
 <script>
     function previewImage() {
-        var fileInput = document.getElementById('foto_barang');
-        var preview = document.getElementById('preview');
-        var label = document.querySelector('.custom-file-label');
+    var fileInput = document.getElementById('foto_barang');
+    var preview = document.getElementById('preview');
+    var label = document.querySelector('.custom-file-label');
 
-        if (fileInput.files && fileInput.files[0]) {
-            var reader = new FileReader();
+    if (fileInput.files && fileInput.files[0]) {
+        var reader = new FileReader();
 
-            reader.onload = function(e) {
-                preview.setAttribute('src', e.target.result);
-                preview.style.display = 'block';
-            }
-
-            reader.readAsDataURL(fileInput.files[0]);
-            label.innerHTML = fileInput.files[0].name;
+        reader.onload = function(e) {
+            preview.setAttribute('src', e.target.result);
+            preview.style.display = 'block';
         }
+
+        reader.readAsDataURL(fileInput.files[0]);
+        label.innerHTML = fileInput.files[0].name;
     }
+}
 </script>
 @endsection

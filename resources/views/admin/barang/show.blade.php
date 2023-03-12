@@ -41,32 +41,21 @@
                                         <p class="price float-left d-block">Rp.{{ number_format($barang->harga_awal, 0,
                                             ',', '.') }}</p>
                                     </div>
-                                    <p>Availability: <span class="item"> In stock <i
-                                                class="fa fa-shopping-basket"></i></span>
+                                    <p>Tanggal: <span class="item"> {{ $barang->tgl }} </span>
                                     </p>
-                                    <p>Product code: <span class="item">0405689</span> </p>
-                                    <p>Brand: <span class="item">Lee</span></p>
-                                    <p>Product tags:&nbsp;&nbsp;
-                                        <span class="badge badge-success light">bags</span>
-                                        <span class="badge badge-success light">clothes</span>
-                                        <span class="badge badge-success light">shoes</span>
-                                        <span class="badge badge-success light">dresses</span>
-                                    </p>
-                                    <p class="text-content">There are many variations of passages of Lorem Ipsum
-                                        available, but the majority have suffered alteration in some form, by injected
-                                        humour, or randomised words which don't look even slightly believable.
-                                        If you are going to use a passage of Lorem Ipsum, you need to be sure there
-                                        isn't anything embarrassing.</p>
-                                    <!--Quantity start-->
-                                    <div class="col-2 px-0">
-                                        <input type="number" name="num" class="form-control input-btn input-number"
-                                            value="1">
-                                    </div>
+                                    <p>Kode Barang: <span class="item">0405689</span> </p>
+                                    <p>Grade: <span class="item">A</span> </p>
+                                    <p class="text-content">{{ $barang->deskripsi_barang}}</p>
                                     <!--Quanatity End-->
                                     <div class="shopping-cart mt-3">
-                                        <a class="btn btn-primary btn-lg" href="javascript:void(0)"><i
-                                                class="fa fa-shopping-basket mr-2"></i>Add
-                                            to cart</a>
+                                        <form action="{{ route('barang.destroy',$barang->id) }}" method="POST">
+                                            <a class="btn btn-primary" href="{{ route('barang.edit',$barang->id) }}"><i
+                                                    class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-youtube"><i class="fa fa-trash"
+                                                    aria-hidden="true"></i></button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

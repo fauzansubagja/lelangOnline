@@ -67,9 +67,16 @@ class BarangController extends Controller
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['foto_barang'] = "$profileImage";
+            if ($barang->foto_barang) {
+                unlink('image/' . $barang->foto_barang); // menghapus file gambar lama
+            }
         } else {
             unset($input['foto_barang']);
+            if ($barang->foto_barang) {
+                unlink('image/' . $barang->foto_barang); // menghapus file gambar lama
+            }
         }
+
 
         $barang->update($input);
 
@@ -79,7 +86,10 @@ class BarangController extends Controller
 
     public function destroy(Barang $barang)
     {
-        $barang->delete();
+        if ($barang->foto_barang) {
+            unlink('image/' . $barang->foto_barang); // menghapus file gambar
+        }
+        $barang->delete(); // menghapus data dari database
 
         return redirect()->route('barang.index')
             ->with('success', 'Barang berhasil dihapus.');

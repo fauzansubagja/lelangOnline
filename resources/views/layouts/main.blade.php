@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Gymove - Fitness Bootstrap Admin Dashboard</title>
+    <title>LelangOnline</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.png')}}">
     <link rel="stylesheet" href="assets/vendor/chartist/css/chartist.min.css">
@@ -919,7 +919,7 @@
         <div class="deznav">
             <div class="deznav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li><a href="widget-basic.html" class="ai-icon" aria-expanded="false">
+                    <li><a href="/dashboard" class="ai-icon" aria-expanded="false">
                             <i class="flaticon-381-networking"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
@@ -930,7 +930,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./chart-flot.html">Barang Detail</a></li>
-                            <li><a href="./chart-morris.html">Tambah Barang</a></li>
+                            <li><a href="/barang">Tambah Barang</a></li>
                         </ul>
                     </li>
                     <li><a href="widget-basic.html" class="ai-icon" aria-expanded="false">

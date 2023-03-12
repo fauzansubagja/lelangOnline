@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('tgl');
             $table->bigInteger('harga_awal');
             $table->string('deskripsi_barang', 255);
+            $table->string('foto_barang');
             $table->timestamps();
         });
     }
